@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+@theme {
+  /* 브랜드 색 — 소개(랜딩) 페이지와 같은 Warm Minimalism 팔레트로 통일
+     cream = 아이보리 배경, leaf = 세이지 그린, peach = 코랄 */
+  --color-cream-50: #fffdf9;
+  --color-cream-100: #fbf6ee;
+  --color-cream-200: #f3eadc;
+  --color-cream-300: #e7d9c4;
+
+  --color-leaf-50: #f1f5ee;
+  --color-leaf-100: #e2eadc;
+  --color-leaf-200: #c8d7be;
+  --color-leaf-500: #7d9a75;
+  --color-leaf-600: #5a7852;
+  --color-leaf-700: #4b6545;
+
+  --color-peach-50: #fff1ec;
+  --color-peach-100: #fde0d5;
+  --color-peach-200: #f6c3b1;
+  --color-peach-500: #c25f45;
+  --color-peach-600: #b5503a;
+  --color-peach-700: #964030;
+
+  /* 랜딩 페이지(Warm Minimalism) 보조 색 — 세이지 그린, 코랄, 수달 브라운 */
+  --color-ivory: #fbf6ee;
+  --color-sage-50: #f1f5ee;
+  --color-sage-100: #e2eadc;
+  --color-sage-200: #c8d7be;
+  --color-sage-500: #7d9a75;
+  --color-sage-700: #4b6545;
+  --color-coral-50: #fff1ec;
+  --color-coral-100: #fde0d5;
+  --color-coral-400: #ee8d74;
+  --color-coral-600: #b5503a;
+  --color-coral-700: #964030;
+  --color-otter-100: #efe4dc;
+  --color-otter-300: #c9ae9e;
+  --color-otter-500: #94776a;
+
+  --color-ink: #3b3027;
+  --color-ink-soft: #6e6052;
+  --color-ink-faint: #9a8b7c;
+
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+
+  --shadow-soft: 0 2px 0 rgba(120, 90, 50, 0.06), 0 8px 24px -12px rgba(120, 90, 50, 0.25);
+}
+
+/* 어르신을 위해 기본 글자 크기를 크게 */
+html {
+  font-size: 18px;
+  -webkit-text-size-adjust: 100%;
+}
+@media (min-width: 768px) {
+  html { font-size: 19px; }
+}
+
+body {
+  background: var(--color-cream-100);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* 키보드 이동 시 눈에 잘 띄는 초점 표시 */
+:focus-visible {
+  outline: 3px solid var(--color-peach-500);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+@keyframes dandi-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.dandi-bob { animation: dandi-bob 3.2s ease-in-out infinite; }
+
+@keyframes dandi-dot {
+  0%, 80%, 100% { opacity: 0.25; transform: translateY(0); }
+  40% { opacity: 1; transform: translateY(-3px); }
+}
+.dandi-dot { animation: dandi-dot 1.2s infinite; }
+
+@keyframes dandi-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+.dandi-in { animation: dandi-in 0.25s ease-out; }
+
+/* ── 랜딩 페이지 ── */
+/* 메뉴로 이동한 구역에 생기는 프로그램 초점은 테두리를 그리지 않음 */
+section[tabindex="-1"]:focus { outline: none; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.is-in { opacity: 1; transform: none; }
+
+@keyframes dandi-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.dandi-float { animation: dandi-float 6s ease-in-out infinite; }
+
+@keyframes dandi-fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.dandi-fade { animation: dandi-fade 0.55s ease-out both; }
+
+.product-shadow { filter: drop-shadow(0 28px 30px rgba(110, 80, 60, 0.22)); }
+
+/* ── 음성 대화 상태 표시 ── */
+@keyframes dandi-ring {
+  0% { transform: scale(0.92); opacity: 0.55; }
+  100% { transform: scale(1.25); opacity: 0; }
+}
+.dandi-ring { animation: dandi-ring 1.8s ease-out infinite; }
+@keyframes dandi-talk {
+  0%, 100% { transform: translateY(0) scale(1); }
+  30% { transform: translateY(-6px) scale(1.015); }
+  60% { transform: translateY(-2px) scale(1.005); }
+}
+.dandi-talk { animation: dandi-talk 0.9s ease-in-out infinite; }
+@keyframes dandi-tilt {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(3deg); }
+}
+.dandi-tilt { animation: dandi-tilt 2.4s ease-in-out infinite; transform-origin: 50% 90%; }
+@keyframes dandi-bar {
+  0%, 100% { transform: scaleY(0.35); }
+  50% { transform: scaleY(1); }
+}
+.dandi-bar { animation: dandi-bar 0.8s ease-in-out infinite; transform-origin: 50% 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dandi-bob, .dandi-dot, .dandi-in, .dandi-float, .dandi-fade, .dandi-ring, .dandi-talk, .dandi-tilt, .dandi-bar { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}

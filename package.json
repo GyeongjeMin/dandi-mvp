@@ -1,0 +1,17 @@
+{
+  "name": "dandi",
+  "version": "0.1.0",
+  "private": true,
+  "description": "단디(DANDI) — AI 기반 시니어 정서 돌봄 웹 MVP",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "setup": "npm install --prefix server && npm install --prefix client",
+    "dev": "node scripts/dev.mjs",
+    "build": "npm run build --prefix client",
+    "start": "npm run start --prefix server",
+    "test": "npm run test --prefix server",
+    "db:reset": "npm run db:reset --prefix server"
+  }
+}
